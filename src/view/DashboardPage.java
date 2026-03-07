@@ -1,41 +1,47 @@
 package view;
 
-import app.Main;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import app.Main;
 
 public class DashboardPage {
 
-    private VBox view;
+    private StackPane view;
 
-    public DashboardPage(Main main){
+    public DashboardPage(Main main) {
 
-        Button newRec = new Button("New Recommendation");
+        // Title
+        Label title = new Label("AI CROP RECOMMENDATION SYSTEM");
+        title.getStyleClass().add("dashboard-title");
 
-        Button feedback = new Button("Give Feedback");
+        Label subtitle = new Label("Smart Farming Assistant");
+        subtitle.getStyleClass().add("dashboard-subtitle");
 
-        Button logout = new Button("Logout");
+        // Buttons
+        Button newRec = new Button("🌱 New Recommendation");
+        Button feedback = new Button("💬 Give Feedback");
+        Button logout = new Button("🚪 Logout");
 
+        // Button actions
         newRec.setOnAction(e -> main.showInputPage());
-
         feedback.setOnAction(e -> main.showFeedbackPage());
-
         logout.setOnAction(e -> main.showLoginPage());
 
-        VBox panel = new VBox(20,newRec,feedback,logout);
-
+        // Panel layout
+        VBox panel = new VBox(30, title, subtitle, newRec, feedback, logout);
         panel.setAlignment(Pos.CENTER);
         panel.getStyleClass().add("panel");
 
-        view = new VBox(panel);
-
+        // Root container
+        view = new StackPane(panel);
         view.setAlignment(Pos.CENTER);
-
         view.getStyleClass().add("dashboard");
     }
 
-    public VBox getView(){
+    public StackPane getView() {
         return view;
     }
 }

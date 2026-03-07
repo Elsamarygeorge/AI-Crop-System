@@ -1,0 +1,181 @@
+/* Global font */
+
+.root{
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+}
+
+/* Glass style panel */
+
+.panel{
+    -fx-background-color: transparent;
+    -fx-padding: 30;
+}
+/* Dashboard background */
+
+.dashboard{
+    -fx-background-image: url("../images/dashboard.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+.inputpage{
+    -fx-background-image: url("../images/farm_bg.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+.outputpage{
+    -fx-background-image: url("../images/output_bg.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+.feedbackpage{
+    -fx-background-image: url("../images/feedback.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+/* Title styling (NEW) */
+
+.title{
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2e8b57;
+}
+
+/* Labels */
+
+.label{
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 14px;
+}
+
+/* Text Fields */
+
+.text-field, .combo-box{
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #cbd5e1;
+    -fx-padding: 8 10 8 10;
+}
+
+.text-field:focused{
+    -fx-border-color: #2e8b57;
+    -fx-border-width: 2;
+}
+
+/* Buttons */
+
+.button{
+    -fx-background-color: linear-gradient(#2e8b57,#256b45);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 28 12 28;
+    -fx-background-radius: 14;
+    -fx-cursor: hand;
+}
+
+.button:hover{
+    -fx-background-color: linear-gradient(#36a366,#2e8b57);
+}
+
+/* Click effect */
+
+.button:pressed{
+    -fx-background-color: #246b45;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+/* Table styling */
+
+.table-view{
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+/* Header styling */
+
+.table-view .column-header-background{
+    -fx-background-color: #2e8b57;
+}
+
+.table-view .column-header, 
+.table-view .filler{
+    -fx-size: 35;
+    -fx-border-width: 0 0 0 0;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Row hover */
+
+.table-row-cell:hover{
+    -fx-background-color: #ecfdf5;
+}
+
+/* Dashboard main heading */
+
+.dashboard-title{
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1b5e20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 3);
+}
+
+.dashboard-subtitle{
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff;   /* pure white */
+}
+
+/* Output page title */
+
+.output-title{
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1b5e20;   /* warm cream */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 3);
+}
+
+/* Crop card container */
+
+.crop-card{
+    -fx-background-color: rgba(255,255,255,0.9);
+    -fx-padding: 15;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2),10,0,0,4);
+}
+
+.crop-card:hover{
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Crop name */
+
+.crop-name{
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* Climate advisory section */
+
+.advisory-title{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.advisory-text{
+    -fx-font-size: 15px;
+    -fx-text-fill: #f5f5f5;
+    -fx-background-color: rgba(0,0,0,0.35);
+    -fx-padding: 12;
+    -fx-background-radius: 10;
+}

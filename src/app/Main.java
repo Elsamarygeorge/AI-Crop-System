@@ -1,7 +1,10 @@
 package app;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 import view.LoginPage;
 import view.DashboardPage;
@@ -25,7 +28,7 @@ public class Main extends Application {
         LoginPage login = new LoginPage(this);
 
         Scene scene = new Scene(login.getView(),600,400);
-        scene.getStylesheets().add("style.css");
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
         primaryStage.setTitle("AI Crop Recommendation System");
         primaryStage.setScene(scene);
@@ -37,7 +40,7 @@ public class Main extends Application {
         DashboardPage dashboard = new DashboardPage(this);
 
         Scene scene = new Scene(dashboard.getView(),700,500);
-        scene.getStylesheets().add("style.css");
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
         primaryStage.setScene(scene);
     }
@@ -47,17 +50,18 @@ public class Main extends Application {
         InputPage input = new InputPage(this);
 
         Scene scene = new Scene(input.getView(),700,500);
-        scene.getStylesheets().add("style.css");
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
         primaryStage.setScene(scene);
     }
 
-    public void showOutputPage(String result){
+    // UPDATED METHOD
+    public void showOutputPage(List<String> results, String advisory){
 
-        OutputPage output = new OutputPage(this, result);
+        OutputPage output = new OutputPage(this, results, advisory);
 
         Scene scene = new Scene(output.getView(),700,500);
-        scene.getStylesheets().add("style.css");
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
         primaryStage.setScene(scene);
     }
@@ -67,7 +71,7 @@ public class Main extends Application {
         FeedbackPage feedback = new FeedbackPage(this);
 
         Scene scene = new Scene(feedback.getView(),600,400);
-        scene.getStylesheets().add("style.css");
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
         primaryStage.setScene(scene);
     }
