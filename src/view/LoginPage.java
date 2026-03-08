@@ -14,10 +14,10 @@ public class LoginPage {
 
     public LoginPage(Main main){
 
-        Image logoImg = new Image(new java.io.File("images/logo.jpg").toURI().toString());
+        Image logoImg = new Image(new java.io.File("images/logo.png").toURI().toString());
         ImageView logo = new ImageView(logoImg);
 
-        logo.setFitHeight(80);
+        logo.setFitHeight(250);
         logo.setPreserveRatio(true);
 
         Label title = new Label("FARMER LOGIN");
@@ -63,7 +63,7 @@ public class LoginPage {
         view.setAlignment(Pos.CENTER);
 
         view.setStyle(
-            "-fx-background-image: url('file:images/farm_bg.jpg');" +
+            "-fx-background-image: url('file:images/login_bg.jpg');" +
             "-fx-background-size: cover;" +
             "-fx-background-position: center center;");
     }
