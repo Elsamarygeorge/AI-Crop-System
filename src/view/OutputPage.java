@@ -27,18 +27,19 @@ public class OutputPage {
 
         for(String r : results){
 
-            // Crop Image
-            Image img = new Image("file:images/" + r.toLowerCase() + ".jpg");
+            String cropName = r.split("-")[0].trim();   
+            cropName = cropName.substring(cropName.indexOf(".") + 1).trim(); 
+
+            Image img = new Image(new java.io.File("images/" + cropName.toLowerCase() + ".jpg").toURI().toString());
+        
             ImageView imageView = new ImageView(img);
             imageView.setFitWidth(140);
             imageView.setFitHeight(120);
             imageView.setPreserveRatio(true);
 
-            // Crop Name
             Label cropLabel = new Label(r);
             cropLabel.getStyleClass().add("crop-name");
 
-            // Card layout
             VBox cropCard = new VBox(10);
             cropCard.setAlignment(Pos.CENTER);
             cropCard.getChildren().addAll(imageView, cropLabel);

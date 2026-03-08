@@ -21,16 +21,22 @@ public class InputPage {
         // -------- INPUT FIELDS --------
         TextField nitrogen = new TextField();
         nitrogen.setPromptText("Nitrogen (N)");
+
         TextField phosphorus = new TextField();
         phosphorus.setPromptText("Phosphorus (P)");
+
         TextField potassium = new TextField();
         potassium.setPromptText("Potassium (K)");
+
         TextField temperature = new TextField();
         temperature.setPromptText("Temperature (°C)");
+
         TextField humidity = new TextField();
         humidity.setPromptText("Humidity (%)");
+
         TextField ph = new TextField();
         ph.setPromptText("Soil pH");
+
         TextField rainfall = new TextField();
         rainfall.setPromptText("Rainfall (mm)");
 
@@ -41,33 +47,59 @@ public class InputPage {
 
         for (TextField f : fields) {
             f.setMaxWidth(220);
-            f.getStyleClass().add("text-field"); // Use CSS class
+            f.getStyleClass().add("text-field");
         }
 
-        // -------- GRID FOR INPUTS --------
+        // -------- GRID --------
         GridPane grid = new GridPane();
         grid.setHgap(15);
         grid.setVgap(15);
         grid.setAlignment(Pos.CENTER);
 
-        // Add labels and fields
-        String[] labels = {"Nitrogen", "Phosphorus", "Potassium", "Temperature", "Humidity", "pH", "Rainfall"};
+        String[] labels = {
+                "Nitrogen",
+                "Phosphorus",
+                "Potassium",
+                "Temperature",
+                "Humidity",
+                "pH",
+                "Rainfall"
+        };
+
         for (int i = 0; i < fields.length; i++) {
+
             Label l = new Label(labels[i]);
-            l.getStyleClass().add("label");  // CSS label styling
+            l.getStyleClass().add("input-label");
+
             grid.add(l, 0, i);
             grid.add(fields[i], 1, i);
         }
 
         // -------- BUTTON --------
         Button submit = new Button("Get Crop Recommendation 🌱");
-        submit.getStyleClass().add("button"); // CSS button styling
+        submit.getStyleClass().add("button");
 
         submit.setOnAction(e -> {
+
+            // 🔴 CHECK FOR EMPTY FIELDS
+            for (TextField field : fields) {
+                if (field.getText().trim().isEmpty()) {
+
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Missing Input");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Please fill all input fields before proceeding.");
+                    alert.showAndWait();
+
+                    return;
+                }
+            }
+
+            // Sample output (your ML result will come later)
             List<String> results = new ArrayList<>();
-            results.add("1. Rice - 92.13%");
-            results.add("2. Maize - 5.02%");
-            results.add("3. Chickpea - 2.85%");
+            results.add("1. Apple - 92.13%");
+            results.add("2. Banana - 5.02%");
+            results.add("3. Blackgram - 2.85%");
 
             String advisory =
                     "Temperature is slightly higher than ideal for some crops.\n" +
@@ -77,16 +109,16 @@ public class InputPage {
             main.showOutputPage(results, advisory);
         });
 
-        // -------- CARD LAYOUT --------
+        // -------- CARD --------
         VBox card = new VBox(25, title, grid, submit);
         card.setAlignment(Pos.CENTER);
-        card.setMaxWidth(800);           // Wider panel to avoid clipping
+        card.setMaxWidth(800);
         card.getStyleClass().add("crop-card");
 
-        // -------- ROOT LAYOUT WITH BACKGROUND --------
+        // -------- ROOT --------
         view = new StackPane(card);
         view.setAlignment(Pos.CENTER);
-        view.getStyleClass().add("inputpage"); // Background image class
+        view.getStyleClass().add("inputpage");
     }
 
     public StackPane getView() {

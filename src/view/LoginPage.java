@@ -4,22 +4,24 @@ import app.Main;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class LoginPage {
 
-    private VBox view;
+    private StackPane view;
 
     public LoginPage(Main main){
 
-        Image logoImg = new Image("file:images/logo.jpg");
+        Image logoImg = new Image(new java.io.File("images/logo.jpg").toURI().toString());
         ImageView logo = new ImageView(logoImg);
 
         logo.setFitHeight(80);
-        logo.setFitWidth(80);
+        logo.setPreserveRatio(true);
 
         Label title = new Label("FARMER LOGIN");
+        title.getStyleClass().add("title");
 
         TextField username = new TextField();
         username.setPromptText("Username");
@@ -30,16 +32,43 @@ public class LoginPage {
         Button loginBtn = new Button("Login");
 
         loginBtn.setOnAction(e -> {
+
+            // 🔴 VALIDATION
+            if(username.getText().trim().isEmpty() || password.getText().trim().isEmpty()){
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Missing Input");
+                alert.setHeaderText(null);
+                alert.setContentText("Please enter both Username and Password.");
+                alert.showAndWait();
+
+                return;
+            }
+
+            // if fields are filled
             main.showDashboard();
         });
 
-        view = new VBox(15,logo,title,username,password,loginBtn);
+        VBox panel = new VBox(15, logo, title, username, password, loginBtn);
+        panel.setAlignment(Pos.CENTER);
+        panel.getStyleClass().add("feedback-panel");
 
+        panel.setMaxWidth(600);
+        panel.setPrefWidth(600);
+
+        username.setMaxWidth(500);
+        password.setMaxWidth(500);
+
+        view = new StackPane(panel);
         view.setAlignment(Pos.CENTER);
-        view.getStyleClass().add("panel");
+
+        view.setStyle(
+            "-fx-background-image: url('file:images/farm_bg.jpg');" +
+            "-fx-background-size: cover;" +
+            "-fx-background-position: center center;");
     }
 
-    public VBox getView(){
+    public StackPane getView(){
         return view;
     }
 }

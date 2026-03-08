@@ -15,19 +15,15 @@ import view.FeedbackPage;
 public class Main extends Application {
 
     private Stage primaryStage;
+    private Scene scene;   // ONE scene for entire app
 
     @Override
     public void start(Stage stage) {
 
         primaryStage = stage;
-        showLoginPage();
-    }
 
-    public void showLoginPage() {
-
-        LoginPage login = new LoginPage(this);
-
-        Scene scene = new Scene(login.getView(),600,400);
+        // create scene only once
+        scene = new Scene(new LoginPage(this).getView(), 900, 650);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
         primaryStage.setTitle("AI Crop Recommendation System");
@@ -35,45 +31,24 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    public void showLoginPage() {
+        scene.setRoot(new LoginPage(this).getView());
+    }
+
     public void showDashboard(){
-
-        DashboardPage dashboard = new DashboardPage(this);
-
-        Scene scene = new Scene(dashboard.getView(),700,500);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-
-        primaryStage.setScene(scene);
+        scene.setRoot(new DashboardPage(this).getView());
     }
 
     public void showInputPage(){
-
-        InputPage input = new InputPage(this);
-
-        Scene scene = new Scene(input.getView(),700,500);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-
-        primaryStage.setScene(scene);
+        scene.setRoot(new InputPage(this).getView());
     }
 
-    // UPDATED METHOD
     public void showOutputPage(List<String> results, String advisory){
-
-        OutputPage output = new OutputPage(this, results, advisory);
-
-        Scene scene = new Scene(output.getView(),700,500);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-
-        primaryStage.setScene(scene);
+        scene.setRoot(new OutputPage(this, results, advisory).getView());
     }
 
     public void showFeedbackPage(){
-
-        FeedbackPage feedback = new FeedbackPage(this);
-
-        Scene scene = new Scene(feedback.getView(),600,400);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-
-        primaryStage.setScene(scene);
+        scene.setRoot(new FeedbackPage(this).getView());
     }
 
     public static void main(String[] args){

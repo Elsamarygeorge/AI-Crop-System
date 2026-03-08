@@ -39,18 +39,17 @@
 
 /* Title styling (NEW) */
 
-.title{
-    -fx-font-size: 26px;
+.label.title{
+    -fx-font-size: 40px;
     -fx-font-weight: bold;
-    -fx-text-fill: #2e8b57;
+    -fx-text-fill: #1b5e20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 3);
 }
 
 /* Labels */
 
 .label{
-    -fx-text-fill: #2c3e50;
-    -fx-font-size: 14px;
-}
+     -fx-text-fill: #2c3e50; -fx-font-size: 14px; }
 
 /* Text Fields */
 
@@ -131,7 +130,11 @@
 
 .dashboard-subtitle{
     -fx-font-size: 18px;
-    -fx-text-fill: #ffffff;   /* pure white */
+    -fx-text-fill: #1b5e20;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 2, 0.2, 0, 1);
+
+   
 }
 
 /* Output page title */
@@ -210,4 +213,11 @@
     -fx-text-fill: #1b5e20;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 3);
     -fx-padding: 0 0 20 0;
+}
+
+.input-label{
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2937;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 2, 0.2, 0, 1);
 }

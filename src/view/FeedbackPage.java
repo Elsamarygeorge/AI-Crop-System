@@ -12,7 +12,7 @@ public class FeedbackPage {
     public FeedbackPage(Main main) {
 
         // ===== TITLE =====
-        Label title = new Label("DID THIS RECOMMENDATION HELP YOU?");
+        Label title = new Label("Did this recommendation help you?");
         title.getStyleClass().add("title");
 
         // ===== OPTIONS =====
@@ -63,12 +63,6 @@ public class FeedbackPage {
                 String feedback = selected.getText();
                 String extraComments = comments.getText().trim();
 
-                System.out.println("User Feedback: " + feedback);
-
-                if (!extraComments.isEmpty()) {
-                    System.out.println("Comments: " + extraComments);
-                }
-
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Thank You!");
                 alert.setHeaderText(null);
@@ -82,7 +76,7 @@ public class FeedbackPage {
         // ===== MAIN LAYOUT =====
         VBox panel = new VBox(25, title, options, comments, buttonBox);
         panel.setAlignment(Pos.CENTER);
-        panel.setMaxWidth(900);
+        panel.setMaxWidth(850);
         panel.getStyleClass().add("feedback-panel");
 
         view = new StackPane(panel);
