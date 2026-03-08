@@ -13,13 +13,13 @@ public class LoginPage {
 
     public LoginPage(Main main){
 
-        Image logoImg = new Image("file:images/logo.png");
+        Image logoImg = new Image("file:images/logo.jpg");
         ImageView logo = new ImageView(logoImg);
 
         logo.setFitHeight(80);
         logo.setFitWidth(80);
 
-        Label title = new Label("Farmer Login");
+        Label title = new Label("FARMER LOGIN");
 
         TextField username = new TextField();
         username.setPromptText("Username");

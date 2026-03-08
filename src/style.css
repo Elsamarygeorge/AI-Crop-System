@@ -137,17 +137,17 @@
 /* Output page title */
 
 .output-title{
-    -fx-font-size: 34px;
+    -fx-font-size: 40px;
     -fx-font-weight: bold;
-    -fx-text-fill: #1b5e20;   /* warm cream */
+    -fx-text-fill: #1b5e20;   
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 3);
 }
 
 /* Crop card container */
 
 .crop-card{
-    -fx-background-color: rgba(255,255,255,0.9);
-    -fx-padding: 15;
+    -fx-background-color: rgba(255,255,255,0.75);
+    -fx-padding: 20;
     -fx-background-radius: 15;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2),10,0,0,4);
 }
@@ -167,7 +167,7 @@
 /* Climate advisory section */
 
 .advisory-title{
-    -fx-font-size: 20px;
+    -fx-font-size: 30px;
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
 }
@@ -178,4 +178,36 @@
     -fx-background-color: rgba(0,0,0,0.35);
     -fx-padding: 12;
     -fx-background-radius: 10;
+}
+
+/* Title for feedback page */
+.feedbackpage .title{
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1b5e20;   
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 3);
+}
+
+/* Radio buttons styling */
+.feedbackpage .radio-button{
+    -fx-font-size: 16px;
+    -fx-text-fill: #2c3e50;
+}
+
+.feedback-panel{
+    -fx-background-color: rgba(255,255,255,0.75);
+    -fx-padding: 35;
+    -fx-background-radius: 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25),15,0,0,5);
+}
+
+/* Input page title */
+.input-title{
+    -fx-font-size: 36px;
+    -fx-letter-spacing: 1.5px;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-text-fill: #1b5e20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 3);
+    -fx-padding: 0 0 20 0;
 }
