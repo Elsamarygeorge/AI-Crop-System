@@ -53,8 +53,8 @@ public class OutputPage {
 
         Label advisoryText = new Label(advisory);
         advisoryText.getStyleClass().add("advisory-text");
-        advisoryText.setWrapText(true);
-        advisoryText.setMaxWidth(500);
+        advisoryText.setMaxWidth(500);   // Maximum width (optional)
+
 
         Button backBtn = new Button("Back to Dashboard");
 
