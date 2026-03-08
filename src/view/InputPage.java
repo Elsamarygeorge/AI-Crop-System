@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import app.Main;
+import backend.CropRecommendationSystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,29 +85,49 @@ public class InputPage {
             // 🔴 CHECK FOR EMPTY FIELDS
             for (TextField field : fields) {
                 if (field.getText().trim().isEmpty()) {
-
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Missing Input");
                     alert.setHeaderText(null);
                     alert.setContentText("Please fill all input fields before proceeding.");
                     alert.showAndWait();
-
                     return;
                 }
             }
 
-            // Sample output (your ML result will come later)
-            List<String> results = new ArrayList<>();
-            results.add("1. Apple - 92.13%");
-            results.add("2. Banana - 5.02%");
-            results.add("3. Blackgram - 2.85%");
+            try {
+                // Parse input values
+                double n = Double.parseDouble(nitrogen.getText());
+                double p = Double.parseDouble(phosphorus.getText());
+                double k = Double.parseDouble(potassium.getText());
+                double temp = Double.parseDouble(temperature.getText());
+                double hum = Double.parseDouble(humidity.getText());
+                double phv = Double.parseDouble(ph.getText());
+                double rain = Double.parseDouble(rainfall.getText());
 
-            String advisory =
-                    "Temperature is slightly higher than ideal for some crops.\n" +
-                    "Humidity levels are suitable.\n" +
-                    "Rainfall may need monitoring for optimal yield.";
+                // Call backend
+                CropRecommendationSystem model = new CropRecommendationSystem();
+                List<String> results = model.getRecommendation(n, p, k, temp, hum, phv, rain);
 
-            main.showOutputPage(results, advisory);
+                // Prepare climate advisory for top 3 crops
+                StringBuilder advisoryBuilder = new StringBuilder();
+                for (String r : results) {
+                    String cropName = r.split("-")[0].trim();
+                    cropName = cropName.substring(cropName.indexOf(".") + 1).trim();
+                    advisoryBuilder.append(
+                            cropName.substring(0, 1).toUpperCase() + cropName.substring(1) + ":\n"
+                    );
+                    advisoryBuilder.append(model.getClimateAdvice(cropName, temp, hum, rain)).append("\n\n");
+                }
+
+                main.showOutputPage(results, advisoryBuilder.toString().trim());
+
+            } catch (NumberFormatException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid Input");
+                alert.setHeaderText(null);
+                alert.setContentText("Please enter valid numeric values for all fields.");
+                alert.showAndWait();
+            }
         });
 
         // -------- CARD --------
